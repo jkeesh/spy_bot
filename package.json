@@ -1,14 +1,11 @@
 {
-  "name": "tsla_bot",
+  "name": "spy_bot",
   "version": "1.0.0",
-  "description": "Simple bot to tweet out TSLA quotes",
+  "description": "Simple bot to tweet out SPY quotes",
   "main": "main.js",
   "dependencies": {
-    "jquery": "^2.1.4",
-    "http": "^0.0.0",
     "request": "^2.67.0",
     "twit": "^2.1.1",
-    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {},
   "scripts": {

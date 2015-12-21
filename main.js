@@ -24,12 +24,12 @@ request({
         var marketCap = parseInt(result['MarketCap']) / billion;
         marketCap = Math.floor(marketCap * 100) / 100;
 
-        var status = "TSLA: $" + result['LastPrice'] + " - Market Cap: $" + marketCap + "B " + new Date().toLocaleString();
+        var status = "SPY: $" + result['LastPrice'] + " - Market Cap: $" + marketCap + "B " + new Date().toLocaleString();
         console.log(status);
 
-        T.post('statuses/update', { status: status }, function(err, data, response) {
-          console.log(data);
-        });
+        // T.post('statuses/update', { status: status }, function(err, data, response) {
+        //   console.log(data);
+        // });
     }
 
 });
