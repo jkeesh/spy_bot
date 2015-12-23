@@ -44,7 +44,8 @@ make it work.
 4. Deploy to your server.
 
 Create a new directory in a bots/ folder. Then create a new remote repository using
-the create_repo.py script. Add this as a web remote.
+the create_repo.py script. Add this as a web remote. Make sure the node modules get deployed
+or you will have to install them as well on the server.
 
 5. Set up the cronjob.
 
