@@ -23,7 +23,7 @@ request({
 
         var price = result.results[0].lastPrice;
 
-        var status = symbol + ": $" + price;
+        var status = symbol + ": $" + price + " " + new Date().toLocaleString();
         console.log(status);
 
         T.post('statuses/update', { status: status }, function(err, data, response) {
