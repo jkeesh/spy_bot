@@ -2,12 +2,16 @@ var request = require('request');
 var Twit = require('twit');
 var secrets = require('./secrets');
 
-var url = 'http://dev.markitondemand.com/Api/v2/Quote/json';
+var symbol = 'SPY';
+
+var url = 'http://marketdata.websol.barchart.com/getQuote.json';
+
 var qs = {
-    symbol: 'SPY'
+    key: secrets.stocks,
+    symbols: symbol
 };
 
-var T = new Twit(secrets);
+var T = new Twit(secrets.twitter);
 
 request({
     url: url,
@@ -16,20 +20,15 @@ request({
 }, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         var result = JSON.parse(body);
-        console.log(result);
-        console.log('$' + result['LastPrice']);
-        console.log(result['MarketCap']);
 
-        var billion = 1000000000;
-        var marketCap = parseInt(result['MarketCap']) / billion;
-        marketCap = Math.floor(marketCap * 100) / 100;
+        var price = result.results[0].lastPrice;
 
-        var status = "SPY: $" + result['LastPrice'] + " - Market Cap: $" + marketCap + "B " + new Date().toLocaleString();
+        var status = symbol + ": $" + price;
         console.log(status);
 
-        // T.post('statuses/update', { status: status }, function(err, data, response) {
-        //   console.log(data);
-        // });
+        T.post('statuses/update', { status: status }, function(err, data, response) {
+          console.log(data);
+        });
     }
 
 });
